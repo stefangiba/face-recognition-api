@@ -9,14 +9,15 @@ const profile = require("./controllers/profile");
 const image = require("./controllers/image");
 
 const PORT = process.env.PORT;
+const DATABASE_URL = process.env.DATABASE_URL;
 
 const db = knex({
   client: "pg",
   connection: {
-    host: "postgresql-acute-89215",
-    user: "stefan",
-    password: "stefan5949",
-    database: "smartbrain",
+    host: DATABASE_URL,
+    ssl: {
+      rejectUnauthorized: false,
+    },
   },
 });
 
